@@ -18,7 +18,6 @@ class User < ApplicationRecord
 end
 
 def password_complexity
-  # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
   return if password.blank? || password =~ /^(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}$/
 
   errors.add :password, 'Complexity requirement not met.'
