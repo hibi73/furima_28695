@@ -97,10 +97,22 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name kana can't be blank")
     end
 
+    it "last_name_kanaが全角カタカナでないと登録できないこと" do
+      @user.last_name_kana = "山田"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana は全角カタカナで入力して下さい。")
+    end
+
     it "first_name_kanaが空では登録できないこと" do
       @user.first_name_kana = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana can't be blank")
+    end
+
+    it "first_name_kanaが全角カタカナでないと登録できないこと" do
+      @user.first_name_kana = "太郎"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana は全角カタカナで入力して下さい。")
     end
 
     it "birthdayが空では登録できないこと" do
