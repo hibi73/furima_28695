@@ -61,6 +61,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password Complexity requirement not met.")
     end
 
+    it "passwordが半角英字のみであれば登録できないこと" do
+      @user.password = "aaaaaaa"
+      @user.password_confirmation = "aaaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Complexity requirement not met.")
+    end
+
     it "passwordが存在してもpassword_confirmationが空では登録できないこと" do
       @user.password_confirmation = ""
       @user.valid?
