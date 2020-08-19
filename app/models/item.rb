@@ -5,4 +5,17 @@ class Item < ApplicationRecord
   belongs_to_active_hash :burden
   belongs_to_active_hash :region
   belongs_to_active_hash :days
+
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+    validates :category
+    validates :status
+    validates :burden
+    validates :region
+    validates :days
+    validates :price
+  end
+
 end
