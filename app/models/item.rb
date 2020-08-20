@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :burden
     validates :region
     validates :days
-    validates :price
+    validates :price, numericality: { only_integer: true,greater_than: 300, less_than: 9999999}
   end
 
 end
