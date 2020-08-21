@@ -1,22 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  before do
-    @item = FactoryBot.build(:item)
-  end
+  describe '#create' do
+    before do
+      @item = FactoryBot.build(:item)
+      @item.image = fixture_file_upload('public/images/test_image.png')
+    end
 
-  describe 'ツイートの保存' do
-    context "ツイートが保存できる場合" do
-      it "画像とテキストがあればツイートは保存される" do
-      end
-      it "テキストのみあればツイートは保存される" do
-      end
+    it 'image,name,description,category_id,status_id,burden_id,region_id,days_id,priceが存在していれば保存できること' do
+      expect(@item).to be_valid
     end
-    context "ツイートが保存できない場合" do
-      it "テキストがないとツイートは保存できない" do
-      end     
-      it "ユーザーが紐付いていないとツイートは保存できない" do
-      end
+
+    it 'が空では保存できないこと' do
+      
+    end
+
+    it 'が空では保存できないこと' do
+      
+    end
+
+    it 'が空では保存できないこと' do
+     
     end
   end
+  
 end
