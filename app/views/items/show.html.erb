@@ -30,7 +30,7 @@
     <% end %>
 
     <% if user_signed_in? && current_user.nickname != @item.user.nickname  %>
-    <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', item_purchases_path(item) ,class:"item-red-btn"%>
     <% end %>
 
     <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
