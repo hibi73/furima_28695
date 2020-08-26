@@ -1,7 +1,6 @@
 class PurchasesController < ApplicationController
 
   def index
-    # binding.pry
     @purchase = PurchaseAddress.new
     @item = Item.find(params[:item_id])
   end
@@ -21,12 +20,13 @@ class PurchasesController < ApplicationController
   private
 
   def order_params
-    params.permit(:token, :postal_code, :prefectures, :municipality, :house_number, :building_name, :phone_number)
+    params.require(:purchase_address).permit(:token, :postal_code, :prefectures, :municipality, :house_number, :building_name, :phone_number)
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
+      amount: @item.price,
       card: order_params[:token],    
       currency:'jpy'                 
     )
