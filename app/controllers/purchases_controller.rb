@@ -7,6 +7,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @purchase = PurchaseAddress.new(order_params)
     if @purchase.valid?
       pay_item
