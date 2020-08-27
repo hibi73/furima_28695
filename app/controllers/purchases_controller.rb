@@ -1,7 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :move_to_new_user_session_purchase
   before_action :move_to_root_path_purchase
-
+  before_action :move_to_root_path_item_purchase
+  
   def index
     @purchase = PurchaseAddress.new
     @item = Item.find(params[:item_id])
@@ -30,6 +31,13 @@ class PurchasesController < ApplicationController
   def move_to_root_path_purchase
     item =Item.find(params[:item_id])
     if user_signed_in? && current_user.id == item.user.id
+      redirect_to root_path
+    end
+  end
+
+  def move_to_root_path_item_purchase
+    item =Item.find(params[:item_id])
+    if item.purchase != nil 
       redirect_to root_path
     end
   end

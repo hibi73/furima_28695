@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @purchase = PurchaseAddress.new
   end
 
   def new

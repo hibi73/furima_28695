@@ -133,7 +133,7 @@
             <%= link_to image_tag(item.image, class: "item-img"), item_path(item.id) %>
 
             <%# 商品が売れていればsold outの表示 %>
-            <% if @purchase == nil %>
+            <% if item.purchase != nil  %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
