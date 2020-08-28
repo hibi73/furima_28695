@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :purchase_address do
-    token {Faker::String.random(length: 32)}
     postal_code {"123-4567"}
     prefectures {24}
     municipality {"名古屋市中村区"}
