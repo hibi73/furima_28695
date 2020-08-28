@@ -2,14 +2,13 @@ class PurchasesController < ApplicationController
   before_action :move_to_new_user_session_purchase
   before_action :move_to_root_path_purchase
   before_action :move_to_root_path_item_purchase
+  before_action :set_item
 
   def index
     @purchase = PurchaseAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase = PurchaseAddress.new(order_params)
     if @purchase.valid?
       pay_item
@@ -21,6 +20,10 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def move_to_new_user_session_purchase
     unless user_signed_in?
