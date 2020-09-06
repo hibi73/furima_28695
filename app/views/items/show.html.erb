@@ -83,19 +83,18 @@
         <%= form.text_area :text, class:"comment-text", placeholder: "コメントする", rows: "2" %>
         <%= form.submit "SEND", class:"comment-btn" %>
       <% end %>
-
+      
     <div class="comments">
-        <h4>＜コメント一覧＞</h4>
-        <% if @comments %>
-          <% @comments.each do |comment| %>
-            <p>
-              <strong><%= link_to comment.user.nickname %>：</strong>
-              <%= comment.text %>
-            </p>
-          <% end %>
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname %>：</strong>
+            <%= comment.text %>
+          </p>
         <% end %>
+      <% end %>
     </div>
-    
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
