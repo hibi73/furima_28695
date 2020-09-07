@@ -10,6 +10,14 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
   belongs_to_active_hash :days
 
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
   with_options presence: true do
     validates :image
     validates :name
