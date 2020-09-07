@@ -1,2 +1,0 @@
-class Sort < ApplicationRecord
-end
